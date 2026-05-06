@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import scrapeRoutes from "./routes/scrapeRoutes.js";
+
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
@@ -12,5 +15,9 @@ app.get("/", (req, res) => {
     message: "API running successfully",
   });
 });
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/scrape", scrapeRoutes);
 
 export default app;

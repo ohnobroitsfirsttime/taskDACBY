@@ -1,1 +1,0 @@
-mongodb+srv://task:<taskDACBY>@cluster0.lyymtur.mongodb.net/

@@ -115,7 +115,7 @@ const HomePage = () => {
             <div className="hero-visual">
               <div className="hero-card hero-card-primary">
                 <span>Fresh stories</span>
-                <strong>42 new links</strong>
+                <strong>10 new stories every minute</strong>
               </div>
               <div className="hero-card hero-card-secondary">
                 <span>Bookmark list</span>

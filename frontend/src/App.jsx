@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import BookmarksPage from "./pages/BookmarksPage";
 
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 function App() {
   return (
     <Routes>
@@ -12,11 +14,18 @@ function App() {
 
       <Route path="/login" element={<LoginPage />} />
 
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/register"
+        element={<RegisterPage />}
+      />
 
       <Route
         path="/bookmarks"
-        element={<BookmarksPage />}
+        element={
+          <ProtectedRoute>
+            <BookmarksPage />
+          </ProtectedRoute>
+        }
       />
     </Routes>
   );

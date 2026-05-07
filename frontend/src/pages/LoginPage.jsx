@@ -1,5 +1,82 @@
+import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+
+import API from "../api/axios";
+
+import { useAuth } from "../context/AuthContext";
+
 const LoginPage = () => {
-  return <h1>Login Page</h1>;
+  const navigate = useNavigate();
+
+  const { login } = useAuth();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await API.post(
+        "/auth/login",
+        formData
+      );
+
+      login(
+        response.data.user,
+        response.data.token
+      );
+
+      navigate("/");
+    } catch (error) {
+      alert(
+        error.response?.data?.message ||
+          "Login failed"
+      );
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          onChange={handleChange}
+        />
+
+        <br />
+        <br />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          onChange={handleChange}
+        />
+
+        <br />
+        <br />
+
+        <button type="submit">
+          Login
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default LoginPage;

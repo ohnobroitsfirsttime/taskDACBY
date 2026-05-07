@@ -36,9 +36,10 @@ const scrapeHackerNews = async () => {
 
         const points = parseInt(pointsText) || 0;
 
-        const author = subtext
-          .find(".hnuser")
-          .text();
+        const author = (
+          subtext.find(".hnuser").text() ||
+          subtext.find("a.hnuser").text()
+        ).trim() || "unknown";
 
         const postedAt = subtext
           .find(".age")

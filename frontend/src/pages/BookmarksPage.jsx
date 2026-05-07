@@ -32,34 +32,48 @@ const BookmarksPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="app-shell">
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "20px auto",
-        }}
-      >
-        <h1>Bookmarked Stories</h1>
+      <main className="main-content">
+        <div className="container">
+          <section className="page-panel">
+            <div className="section-title">
+              <h1>Bookmarked Stories</h1>
+            </div>
 
-        {loading && <p>Loading...</p>}
+            {loading && (
+              <div className="loading-panel">
+                <div className="spinner" />
+              </div>
+            )}
 
-        {!loading &&
-          bookmarks.length === 0 && (
-            <p>No bookmarks yet</p>
-          )}
+            {!loading && bookmarks.length === 0 && (
+              <div className="empty-state">
+                <span className="empty-state-icon">★</span>
+                <h3>No bookmarks yet.</h3>
+                <p>
+                  Save stories as you browse the feed to build your own reading
+                  list.
+                </p>
+              </div>
+            )}
 
-        {bookmarks.map((story) => (
-          <StoryCard
-            key={story._id}
-            story={story}
-            refreshBookmarks={
-              fetchBookmarks
-            }
-          />
-        ))}
-      </div>
+            {!loading && bookmarks.length > 0 && (
+              <div className="stories-list">
+                {bookmarks.map((story) => (
+                  <StoryCard
+                    key={story._id}
+                    story={story}
+                    isBookmarked={true}
+                    refreshBookmarks={fetchBookmarks}
+                  />
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+      </main>
     </div>
   );
 };

@@ -4,11 +4,17 @@ import {
   getStories,
   getSingleStory,
   toggleBookmark,
+  getBookmarkedStories,
 } from "../controllers/storyController.js";
 
 import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+router.get(
+  "/bookmarks/all",
+  protect,
+  getBookmarkedStories
+);
 
 router.get("/", getStories);
 

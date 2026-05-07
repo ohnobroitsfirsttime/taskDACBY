@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import API from "../api/axios";
 
+import Navbar from "../components/Navbar";
+
 import { useAuth } from "../context/AuthContext";
 
 const RegisterPage = () => {
@@ -48,44 +50,63 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="app-shell">
+      <Navbar />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter name"
-          onChange={handleChange}
-        />
+      <main className="main-content">
+        <div className="container">
+          <section className="auth-card">
+            <div className="auth-header">
+              <span className="eyebrow">Create an account</span>
+              <h1 className="page-title">Register and start bookmarking</h1>
+            </div>
 
-        <br />
-        <br />
+            <form className="auth-form" onSubmit={handleSubmit}>
+              <label className="form-group">
+                <span className="form-label">Name</span>
+                <input
+                  className="form-input"
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          onChange={handleChange}
-        />
+              <label className="form-group">
+                <span className="form-label">Email</span>
+                <input
+                  className="form-input"
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-        <br />
-        <br />
+              <label className="form-group">
+                <span className="form-label">Password</span>
+                <input
+                  className="form-input"
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          onChange={handleChange}
-        />
-
-        <br />
-        <br />
-
-        <button type="submit">
-          Register
-        </button>
-      </form>
+              <div className="form-actions">
+                <button className="btn btn-primary" type="submit">
+                  Register
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
     </div>
   );
 };

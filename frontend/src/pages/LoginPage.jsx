@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import API from "../api/axios";
 
+import Navbar from "../components/Navbar";
+
 import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
@@ -47,34 +49,51 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="app-shell">
+      <Navbar />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email"
-          onChange={handleChange}
-        />
+      <main className="main-content">
+        <div className="container">
+          <section className="auth-card">
+            <div className="auth-header">
+              <span className="eyebrow">Welcome back</span>
+              <h1 className="page-title">Sign in to your account</h1>
+            </div>
 
-        <br />
-        <br />
+            <form className="auth-form" onSubmit={handleSubmit}>
+              <label className="form-group">
+                <span className="form-label">Email</span>
+                <input
+                  className="form-input"
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          onChange={handleChange}
-        />
+              <label className="form-group">
+                <span className="form-label">Password</span>
+                <input
+                  className="form-input"
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  onChange={handleChange}
+                  required
+                />
+              </label>
 
-        <br />
-        <br />
-
-        <button type="submit">
-          Login
-        </button>
-      </form>
+              <div className="form-actions">
+                <button className="btn btn-primary" type="submit">
+                  Login
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
     </div>
   );
 };

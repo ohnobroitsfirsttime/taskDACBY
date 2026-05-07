@@ -99,3 +99,24 @@ export const toggleBookmark = async (req, res) => {
     });
   }
 };
+
+export const getBookmarkedStories = async (
+  req,
+  res
+) => {
+  try {
+    const user = await User.findById(
+      req.user._id
+    ).populate("bookmarks");
+
+    res.status(200).json({
+      success: true,
+      bookmarks: user.bookmarks,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

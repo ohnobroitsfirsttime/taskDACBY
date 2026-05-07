@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import scrapeRoutes from "./routes/scrapeRoutes.js";
-
+import storyRoutes from "./routes/storyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
@@ -19,5 +19,6 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/scrape", scrapeRoutes);
+app.use("/api/stories", storyRoutes);
 
 export default app;

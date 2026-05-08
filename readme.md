@@ -371,16 +371,11 @@ Authorization: Bearer YOUR_TOKEN
 
 ## Frontend Deployment
 
-Recommended:
-
 - Vercel
 
 ## Backend Deployment
 
-Recommended:
-
 - Render
-- Railway
 
 ---
 
@@ -402,9 +397,9 @@ Add project screenshots here.
 
 Example:
 
-```md
-![Home Page](https://ik.imagekit.io/ay6bdp4tm/Home.png)
-```
+<p align="center">
+  <img src="https://ik.imagekit.io/ay6bdp4tm/Home.png" width="800"/>
+</p>
 
 ---
 
